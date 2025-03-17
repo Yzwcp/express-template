@@ -1,0 +1,31 @@
+.DS_Store
+node_modules
+/dist
+dist.zip
+*.lock
+package-lock.json
+#release.js
+#release.vbs
+# local env files
+.env
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# other files
+stats.html
+auto-imports.d.ts
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+pnpm-lock.yaml

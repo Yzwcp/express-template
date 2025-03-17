@@ -1,0 +1,24 @@
+{
+	"name": "template",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "nodemon ./bin/www",
+		"db:push": "npx sequelize-cli db:migrate",
+		"format:check": "prettier --check \"**/*.{js,json}\"",
+		"format": "prettier --write \"**/*.{js,json}\"",
+		"seed:g": "sequelize seed:generate --name ",
+		"seed:push": "sequelize db:seed --seed "
+	},
+	"dependencies": {
+		"cookie-parser": "~1.4.4",
+		"debug": "~2.6.9",
+		"express": "~4.16.1",
+		"morgan": "~1.9.1",
+		"mysql2": "^3.13.0",
+		"sequelize": "^6.37.6"
+	},
+	"devDependencies": {
+		"prettier": "^3.5.3"
+	}
+}
