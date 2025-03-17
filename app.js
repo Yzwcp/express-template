@@ -8,6 +8,7 @@ const usersRouter = require('./routes/users')
 
 const adminArticlesRouter = require('./routes/admin/article')
 const adminCategoryRouter = require('./routes/admin/categories')
+const adminSettingRouter = require('./routes/admin/settings')
 
 const app = express()
 
@@ -23,5 +24,6 @@ app.use('/users', usersRouter)
 //管理员文章后台
 app.use('/admin/articles', adminArticlesRouter)
 app.use('/admin/categories', adminCategoryRouter)
+app.use('/admin/settings', adminSettingRouter)
 
 module.exports = app

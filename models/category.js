@@ -1,5 +1,5 @@
 'use strict'
-const { Model } = require('sequelize')
+const { Model ,DataTypes} = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
 	class Category extends Model {
 		/**
@@ -23,14 +23,19 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			rank: {
 				type: DataTypes.INTEGER,
-				notNull: { msg: '排序必须填写' },
-				notEmpty: { msg: '排序必须填写' },
-				isInt: { msg: '排序必须是整数' },
+				allowNull: false,
+				validate: {
+					notNull: { msg: '排序必须填写' },
+					notEmpty: { msg: '排序必须填写' },
+					isInt: { msg: '排序必须是整数' },
+					isNumeric: { msg: '排序必须是数字' },
+				},
 				isPositive(v) {
 					if (v <= 0) {
 						throw new Error('排序必须大于0')
 					}
 				}
+
 			}
 		},
 		{

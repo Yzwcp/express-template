@@ -4,10 +4,10 @@
 	"private": true,
 	"scripts": {
 		"dev": "nodemon ./bin/www",
-		"db:push": "npx sequelize-cli db:migrate",
+		"db:push": "sequelize db:migrate",
 		"format:check": "prettier --check \"**/*.{js,json}\"",
 		"format": "prettier --write \"**/*.{js,json}\"",
-		"seed:g": "sequelize seed:generate --name ",
+		"seed:gen": "sequelize seed:generate --name ",
 		"seed:push": "sequelize db:seed --seed "
 	},
 	"dependencies": {

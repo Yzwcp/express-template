@@ -24,10 +24,10 @@ router.get('/', async function (req, res) {
 		offset,
 		limit
 	}
-	if (req.query.title) {
+	if (req.query.name) {
 		condition.where = {
-			title: {
-				[Op.like]: '%' + req.query.title + '%'
+			name: {
+				[Op.like]: '%' + req.query.name + '%'
 			}
 		}
 	}
@@ -68,13 +68,13 @@ router.get('/:id', async function (req, res) {
  */
 router.post('/', async function (req, res) {
 	let body = {
-		title: req.body.title,
-		content: req.body.content
+		name: req.body.name,
+		rank: req.body.rank
 	}
 
 	try {
 		const data = await Category.create(body)
-		success(res, null, '发布成功')
+		success(res, null, '操作成功')
 	} catch (e) {
 		failure(res, e)
 	}
