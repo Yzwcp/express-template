@@ -7,6 +7,7 @@ const BusinessController = require('../controllers/client/business.controller')
 router.get('/', (req, res) => UserController.getMe(req, res))
 router.put('/info', (req, res) => UserController.updateUserInfo(req, res))
 router.put('/account', (req, res) => UserController.updateUserAccount(req, res))
-router.post('/like', (req, res) => UserController.getCourseLike(req, res))
+router.post('/like', (req, res) => UserController.actionCourseLike(req, res))
+router.get('/likeListByCourse', (req, res) => UserController.getLikeListByCourse(req, res))
 
 module.exports = router

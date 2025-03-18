@@ -49,7 +49,8 @@ class Controller {
 		await user.update(body)
 		success(res, null, '更新用户信息成功。')
 	}
-	async getCourseLike(req, res) {
+	//点赞和取消点赞
+	async actionCourseLike(req, res) {
 		const { courseId } = req.body
 		if (!courseId) {
 			throw new Error('课程id不能为空。')
@@ -79,6 +80,8 @@ class Controller {
 			success(res, null, '取消赞成功。')
 		}
 	}
+
+	async getLikeListByCourse(req, res) {}
 }
 
 module.exports = new Controller()
