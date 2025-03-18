@@ -54,7 +54,7 @@ class Controller {
 			}
 		})
 		if (courseCount > 0) {
-			throw new Error('该分类下有课程，无法删除')
+			throw BadRequest('该分类下有课程，无法删除')
 		}
 		await BaseDao.removeById(baseModel, id)
 		success(res, null, '删除成功')

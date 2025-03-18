@@ -6,5 +6,6 @@ router.get('/home', (req, res) => BusinessController.getHomeData(req, res))
 router.get('/categories', (req, res) => BusinessController.getCategoriesList(req, res))
 router.get('/courses', (req, res) => BusinessController.getCoursesList(req, res))
 router.get('/courses/:id', (req, res) => BusinessController.getCourseDetail(req, res))
+router.get('/chapter/:id', (req, res) => BusinessController.getChapter(req, res))
 
 module.exports = router

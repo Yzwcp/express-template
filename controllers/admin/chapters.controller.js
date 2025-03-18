@@ -10,7 +10,7 @@ class Controller {
 		// 主体逻辑开始
 		//定义查询条件
 		if (!query.courseId) {
-			throw new Error('获取章节列表失败，课程ID不能为空。')
+			throw BadRequest('获取章节列表失败，课程ID不能为空。')
 		}
 
 		const condition = {

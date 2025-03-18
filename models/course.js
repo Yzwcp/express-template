@@ -21,11 +21,8 @@ module.exports = (sequelize, DataTypes) => {
 			//这里要用belongsToMany，来实现多对多关联，并且用through，也就是说要通过Likes中间表来实现关联。
 			//中间还加了个foreignKey，它是用来指明中间表里关联用的外键叫什么。
 			//通常来说，关联用的外键命名规范的话，是不需要明确指定foreignKey的。只有命名不规范的时候，才会用到foreignKey。但是在多对多关联里，不指定的话，会造成一个 Bug，会导致前面的添加点赞失败。
-			// models.Course.belongsToMany(models.Like, {
-			// 	through: models.Like,
-			// 	foreignKey: 'courseId',
-			// 	as: 'likeUsers'
-			// })
+
+			models.Course.belongsToMany(models.User, { through: models.Like, foreignKey: 'courseId', as: 'likeUsers' });
 		}
 	}
 	Course.init(

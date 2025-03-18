@@ -6,7 +6,8 @@
 		"host": "129.211.13.250",
 		"dialect": "mysql",
 		"port": "54563",
-		"timezone": "+08:00"
+		"timezone": "+08:00",
+		"logQueryParameters": true
 	},
 	"test": {
 		"username": "root",

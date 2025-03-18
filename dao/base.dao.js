@@ -1,5 +1,5 @@
 const { Article } = require('../models')
-const { NotFoundError } = require('../utils/errors')
+const { NotFound } = require('http-errors')
 
 class BaseDao {
 	constructor() {}
@@ -39,7 +39,7 @@ class BaseDao {
 	 * @param {number} id - 数据id
 	 * @param {Object} condition - 查询条件
 	 * @returns {Promise<import('sequelize').Model>}
-	 * @throws {NotFoundError}
+	 * @throws {NotFound}
 	 *
 	 * */
 	async getPkById(db, id, condition = {}) {

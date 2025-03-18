@@ -1,6 +1,6 @@
 'use strict'
 const { Model } = require('sequelize')
-const { NotFoundError } = require('../utils/errors')
+const { NotFound } = require('http-errors')
 
 module.exports = (sequelize, DataTypes) => {
 	class Article extends Model {

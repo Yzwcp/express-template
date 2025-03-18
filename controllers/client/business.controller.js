@@ -1,7 +1,7 @@
 const BaseDao = require('../../dao/base.dao')
 const { Course, Category, User, Chapter, Like } = require('../../models')
 const { success, failure } = require('../../utils/response')
-const { NotFoundError } = require('../../utils/errors')
+const { NotFound } = require('http-errors')
 
 class BusinessController {
 	constructor() {}
@@ -56,7 +56,7 @@ class BusinessController {
 	}
 	//获取课程列表
 	async getCoursesList(req, res) {
-		if (!req.query.categoryId) throw new Error('课程id不能为空')
+		if (!req.query.categoryId) throw BadRequest('课程id不能为空')
 
 		const { currentPage, pageSize } = req.query
 
@@ -74,7 +74,7 @@ class BusinessController {
 	//获取课程详情
 	async getCourseDetail(req, res) {
 		const id = req.params.id
-		if (!id) throw new Error('课程id不能为空')
+		if (!id) throw BadRequest('课程id不能为空')
 		const condition = {
 			include: [
 				{
@@ -98,9 +98,35 @@ class BusinessController {
 		}
 		const categories = await BaseDao.getPkById(Course, id, condition)
 		if (!categories) {
-			throw new Error('课程不存在')
+			throw BadRequest('课程不存在')
 		}
 		success(res, categories)
+	}
+
+
+	async getChapter(req, res) {
+		const id = req.params.id
+		if (!id) throw BadRequest('章节id不能为空')
+		const chapter = await Chapter.findByPk(id,{
+			attributes:{
+				exclude: ['CourseId']
+			}
+		})
+		const course = await chapter.getCourse({
+			attributes:{
+				exclude: ['CategoryId', 'UserId', 'content']
+			}
+		})
+		const user = await course.getUser({
+			attributes:{
+				exclude: ['password', 'role']
+			}
+		})
+		success(res, {
+			chapter,
+			course,
+			user
+		})
 	}
 }
 module.exports = new BusinessController()

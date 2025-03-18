@@ -78,7 +78,7 @@ class Controller {
 	async removeById(req, res) {
 		let id = req.params.id
 		const count = await Chapter.count({ where: { courseId: id } })
-		if (count > 0) throw new Error('该课程下有章节，不能删除')
+		if (count > 0) throw BadRequest('该课程下有章节，不能删除')
 		await BaseDao.removeById(baseModel, id)
 		success(res, null, '删除成功')
 	}

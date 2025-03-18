@@ -9,5 +9,6 @@ router.put('/info', (req, res) => UserController.updateUserInfo(req, res))
 router.put('/account', (req, res) => UserController.updateUserAccount(req, res))
 router.post('/like', (req, res) => UserController.actionCourseLike(req, res))
 router.get('/likeListByCourse', (req, res) => UserController.getLikeListByCourse(req, res))
+router.get('/courseLikeListByUser', (req, res) => UserController.courseLikeListByUser(req, res))
 
 module.exports = router
