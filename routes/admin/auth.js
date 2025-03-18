@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Controller = require('../../controllers/admin/article.controller')
+const Controller = require('../../controllers/auth.controller')
 /**
  * 查询列表
  * GET /admin/articles
@@ -14,10 +14,10 @@ router.get('/', (req, res, next) => Controller.getList(req, res))
 router.get('/:id', (req, res) => Controller.getOneById(req, res))
 
 /**
- * 发布
- * POST /admin/articles
+ * 登录
+ * POST /admin/sign-in
  */
-router.post('/', (req, res) => Controller.create(req, res))
+router.post('/sign-in', (req, res) => Controller.signIn(req, res))
 
 /**
  *	删除

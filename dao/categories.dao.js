@@ -1,5 +1,5 @@
 const { Category } = require('../models')
-const { NotFoundError } = require('../utils/response')
+const { NotFoundError } = require('../utils/errors')
 
 class CategoriesDao {
 	constructor() {}

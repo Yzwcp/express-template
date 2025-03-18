@@ -1,5 +1,5 @@
 'use strict'
-const { Model ,DataTypes} = require('sequelize')
+const { Model, DataTypes } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
 	class Category extends Model {
 		/**
@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
+			models.Category.hasMany(models.Course, { as: 'courses' })
 		}
 	}
 	Category.init(
@@ -28,14 +29,13 @@ module.exports = (sequelize, DataTypes) => {
 					notNull: { msg: '排序必须填写' },
 					notEmpty: { msg: '排序必须填写' },
 					isInt: { msg: '排序必须是整数' },
-					isNumeric: { msg: '排序必须是数字' },
+					isNumeric: { msg: '排序必须是数字' }
 				},
 				isPositive(v) {
 					if (v <= 0) {
 						throw new Error('排序必须大于0')
 					}
 				}
-
 			}
 		},
 		{

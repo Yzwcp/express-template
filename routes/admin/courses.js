@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Controller = require('../../controllers/admin/article.controller')
+const Controller = require('../../controllers/admin/courses.controller')
 /**
  * 查询列表
  * GET /admin/articles

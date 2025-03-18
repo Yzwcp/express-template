@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const { Setting } = require('../../models')
-const { success, failure } = require('../../utils/response')
-const SettingController = require('../../controllers/setting.controller')
+const Controller = require('../../controllers/admin/setting.controller')
 
 /**
- * 查看设置详情
- * GET /admin/settings/1
+ * 查看详情
+ * GET /admin/settings
  */
-router.get('/:id', (req, res)=> SettingController.get(req, res))
+router.get('/', (req, res) => Controller.getOneById(req, res))
+
 /**
- *	更新设置
+ *	更新
  * PUT /admin/settings
  */
-router.put('/', (req, res)=> SettingController.put(req, res))
+router.put('/', (req, res) => Controller.updateById(req, res))
+
 module.exports = router
